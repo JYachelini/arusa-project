@@ -20,48 +20,58 @@ function FirstProduct() {
 			}}
 		>
 			<Box sx={{ width: { tablet: '50%' } }}>
-				<img
+				<Box
+					component='img'
 					src={product.imageUrl}
 					alt={product.title}
-					style={{ width: '100%', height: '100%' }}
-				/>
+					sx={{ width: '100%', height: '100%' }}
+				></Box>
 			</Box>
 			<Box
 				sx={{
-					display: 'flex',
-					gap: '48px',
-					textAlign: 'left',
 					width: { tablet: '50%' },
-					flexDirection: 'column',
+					display: 'flex',
+					alignItems: 'center',
 					justifyContent: 'center',
 				}}
 			>
-				<Typography variant='h4' color='white.main'>
-					{product.title}
-				</Typography>
 				<Box
 					sx={{
 						display: 'flex',
-						gap: '24px',
-						flexDirection: { mobile: 'column' },
+						gap: '48px',
+						width: { tablet: '400px' },
+						textAlign: 'left',
+						flexDirection: 'column',
+						justifyContent: 'center',
 					}}
 				>
-					<Typography sx={{ typography: 'regular', color: 'oyster.main' }}>
-						{product.description}
+					<Typography variant='h4' color='white.main'>
+						{product.title}
 					</Typography>
-					<Typography>
-						<Button
-							variant='teritary'
-							sx={{
-								typography: 'small',
-								color: 'white.main',
-								paddingX: '0',
-								'&:after': { borderColor: 'white.main' },
-							}}
-						>
-							View product
-						</Button>
-					</Typography>
+					<Box
+						sx={{
+							display: 'flex',
+							gap: '24px',
+							flexDirection: { mobile: 'column' },
+						}}
+					>
+						<Typography sx={{ typography: 'regular', color: 'oyster.main' }}>
+							{product.description}
+						</Typography>
+						<Typography>
+							<Button
+								variant='teritary'
+								sx={{
+									typography: 'small',
+									color: 'white.main',
+									paddingX: '0',
+									'&:after': { borderColor: 'white.main' },
+								}}
+							>
+								View product
+							</Button>
+						</Typography>
+					</Box>
 				</Box>
 			</Box>
 		</Container>

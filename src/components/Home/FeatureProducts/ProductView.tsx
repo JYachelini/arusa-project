@@ -1,8 +1,20 @@
 import { Grid, Typography, Box } from '@mui/material'
 
 import { IProduct } from '../../../interfaces/product.interface'
+import { toPrice } from '../../../common/toPrice'
 
-function ProductView({ product }: { product: IProduct }) {
+type TextColor = 'cloudy.main' | 'stormy.main'
+type BorderColor = 'cloudy.main' | 'oyster.main'
+
+function ProductView({
+	product,
+	textColor = 'stormy.main',
+	borderColor = 'oyster.main',
+}: {
+	product: IProduct
+	textColor?: TextColor
+	borderColor?: BorderColor
+}) {
 	return (
 		<Grid
 			item
@@ -20,6 +32,7 @@ function ProductView({ product }: { product: IProduct }) {
 				'&:nth-last-of-type(-n+2)': {
 					borderTop: { mobile: '1px solid', tablet: 'none' },
 				},
+				cursor: 'pointer',
 			}}
 			mobile={6}
 			tablet={3}
@@ -33,11 +46,11 @@ function ProductView({ product }: { product: IProduct }) {
 					flexDirection: { mobile: 'column', tablet: 'row' },
 				}}
 			>
-				<Typography variant='small' color='stormy.main'>
+				<Typography variant='small' color={textColor}>
 					{product.title}
 				</Typography>
-				<Typography variant='small' color='stormy.main'>
-					${product.price}
+				<Typography variant='small' color={textColor}>
+					${toPrice(product.price!)}
 				</Typography>
 			</Box>
 		</Grid>

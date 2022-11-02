@@ -1,6 +1,23 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme, ThemeProvider } from '@mui/material'
+import React from 'react'
+import { themeBreakpoints, themePallete } from './theme.enum'
+
+type ThemeProp = {
+	children: JSX.Element
+}
 
 declare module '@mui/material/styles' {
+	interface BreakpointOverrides {
+		xs: false
+		sm: false
+		md: false
+		lg: false
+		xl: false
+		mobile: true
+		tablet: true
+		laptop: true
+		desktop: true
+	}
 	interface TypographyVariantsOptions {
 		large?: React.CSSProperties
 		regular?: React.CSSProperties
@@ -48,6 +65,21 @@ declare module '@mui/material/Button' {
 		teritary: true
 	}
 }
+
+declare module '@mui/material/Badge' {
+	interface BadgePropsColorOverrides {
+		white: true
+		black: true
+		stormy: true
+		smoke: true
+		ash: true
+		linen: true
+		oyster: true
+		cloudy: true
+		opal: true
+	}
+}
+
 declare module '@mui/material/Typography' {
 	interface TypographyPropsVariantOverrides {
 		large: true
@@ -55,48 +87,35 @@ declare module '@mui/material/Typography' {
 		small: true
 	}
 }
-declare module '@mui/material/styles' {
-	interface BreakpointOverrides {
-		xs: false
-		sm: false
-		md: false
-		lg: false
-		xl: false
-		mobile: true
-		tablet: true
-		laptop: true
-		desktop: true
-	}
-}
 
 const theme = createTheme({
 	palette: {
 		white: {
-			main: '#FCFDFD',
+			main: themePallete.white,
 		},
 		black: {
-			main: '#000000',
+			main: themePallete.black,
 		},
 		stormy: {
-			main: '#323334',
+			main: themePallete.stormy,
 		},
 		smoke: {
-			main: '#4E4F51',
+			main: themePallete.smoke,
 		},
 		ash: {
-			main: '#7C7F84',
+			main: themePallete.ash,
 		},
 		linen: {
-			main: '#F8F4E7',
+			main: themePallete.linen,
 		},
 		oyster: {
-			main: '#DFDEDB',
+			main: themePallete.oyster,
 		},
 		cloudy: {
-			main: '#F5F4F3',
+			main: themePallete.cloudy,
 		},
 		opal: {
-			main: '#384353',
+			main: themePallete.opal,
 		},
 	},
 	components: {
@@ -185,13 +204,52 @@ const theme = createTheme({
 				},
 			],
 		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: '1rem',
+				},
+			},
+		},
+		MuiBadge: {
+			variants: [
+				{
+					props: { color: 'opal' },
+					style: ({ theme: t }) => ({
+						color: t.palette.stormy.main,
+						borderRadius: '0',
+						border: 'none',
+						'&:hover': {
+							backgroundColor: 'transparent',
+						},
+						'&:after': {
+							display: 'block',
+							content: '""',
+							borderBottom: '1px solid',
+							borderColor: t.palette.stormy.main,
+							position: 'absolute',
+							bottom: '0',
+							width: '100%',
+							transform: 'scaleX(0)',
+							transition: 'transform 300ms ease-in-out',
+						},
+						'&:hover:after': {
+							transform: 'scaleX(1)',
+						},
+						'&:disabled': {
+							color: t.palette.stormy.main,
+						},
+					}),
+				},
+			],
+		},
 	},
 	breakpoints: {
 		values: {
-			mobile: 0,
-			tablet: 640,
-			laptop: 1024,
-			desktop: 1200,
+			mobile: themeBreakpoints.mobile,
+			tablet: themeBreakpoints.tablet,
+			laptop: themeBreakpoints.laptop,
+			desktop: themeBreakpoints.desktop,
 		},
 	},
 
@@ -257,4 +315,6 @@ const theme = createTheme({
 	},
 })
 
-export default theme
+export const ThemeConfig: React.FC<ThemeProp> = ({ children }) => {
+	return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+}

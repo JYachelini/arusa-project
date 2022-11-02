@@ -15,20 +15,20 @@ function FeatureProducts() {
 		},
 		{
 			id: 2,
-			title: 'Native Iron Chair',
-			price: 4990,
+			title: 'Century Dashe',
+			price: 1799,
 			imageUrl: Image2,
 		},
 		{
 			id: 3,
-			title: 'Native Iron Chair',
+			title: 'Native Light Chair',
 			price: 4990,
 			imageUrl: Image3,
 		},
 		{
 			id: 4,
-			title: 'Native Iron Chair',
-			price: 4990,
+			title: 'Paola Wood Lamp',
+			price: 5990,
 			imageUrl: Image4,
 		},
 	]
@@ -46,7 +46,7 @@ function FeatureProducts() {
 			>
 				Enjoy our feature products
 			</Typography>
-			<Grid container sx={{ borderBottom: '1px solid', borderColor: 'oyster.main' }}>
+			<Grid container>
 				{products.map((product) => {
 					return <ProductView key={product.id} product={product} />
 				})}
@@ -58,6 +58,7 @@ function FeatureProducts() {
 					color: 'stormy.main',
 					width: '100%',
 					borderBottom: '1px solid',
+					borderTop: '1px solid',
 					borderColor: 'oyster.main',
 				}}
 			>

@@ -3,6 +3,7 @@ import { IHeader } from './footer.interface'
 import Footer_Header from './Footer_Header'
 import Logo from '../../assets/logos/arusa.svg'
 import Copyright from './Copyright'
+import { ArusaLogo } from '../../common/arusaLogo'
 
 function Footer() {
 	const header: IHeader[] = [
@@ -135,7 +136,8 @@ function Footer() {
 				})}
 			</Grid>
 			<Container sx={{ marginY: { mobile: '2.188rem', tablet: '5.625rem' } }}>
-				<img src={Logo} alt='arusa' />
+				<ArusaLogo />
+				{/* <img src={Logo} alt='arusa' /> */}
 			</Container>
 			<Container
 				sx={{

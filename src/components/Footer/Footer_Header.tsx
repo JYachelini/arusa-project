@@ -1,12 +1,4 @@
-import {
-	Grid,
-	List,
-	ListItem,
-	ListItemText,
-	Typography,
-	Link,
-	Button,
-} from '@mui/material'
+import { Grid, List, ListItem, ListItemText, Typography, Link } from '@mui/material'
 import { IHeader } from './footer.interface'
 
 function Footer_Header({ item }: { item: IHeader }) {
