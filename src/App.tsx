@@ -8,7 +8,7 @@ import Home from './components/Home/Home'
 function App() {
 	return (
 		<Container disableGutters className='App' sx={{ position: 'relative' }}>
-			<Navbar color='white' />
+			<Navbar color={true} />
 			<Home />
 			<Footer />
 		</Container>
